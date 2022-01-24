@@ -1,0 +1,62 @@
+body {
+    background-color: lightskyblue;
+    box-align: center;
+}
+
+#finbild{
+float: left;
+width: 340px;
+border-style: solid;
+border-width: 2px;
+height: 400px;
+object-fit: fill;
+
+}
+
+#bb {
+    margin-top: 100px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    
+}
+#login {
+    background-color: white;
+    border-style: solid;
+    border-width: 2px;
+    width: 250px;
+    height: 80px;
+    
+}
+h1{
+    text-align: center;
+}
+
+#signup {
+    background-color: white;
+    border-style: solid;
+    border-width: 2px;
+    margin-top: 10px;
+    width: 250px;
+    height: 306px;
+
+}
+    
+#btn{
+    clear: right;
+    float: right;
+
+}
+
+#field{
+    clear: right;
+    float: right;
+    max-width: 160px;
+}
+
+#makespace {
+    float: left;
+    margin-left: 10px;
+    height: 400px;
+    
+}
