@@ -1,1 +1,105 @@
-d 
+body {
+    background-color: lightskyblue;
+    box-align: center;
+}
+
+#finbild{
+    float: left;
+    width: 340px;
+    border-style: solid;
+    border-width: 2px;
+    height: 400px;
+    object-fit: fill;
+
+}
+
+#bb {
+    margin-top: 100px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    
+}
+#login {
+    background-color: white;
+    border-style: solid;
+    border-width: 2px;
+    height: 86px; 
+    display: flex;
+    justify-content: center;
+    font-size: 12pt;
+    
+}
+h1{
+    text-align: center;
+}
+
+p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#signup {
+    background-color: white;
+    border-style: solid;
+    border-width: 2px;
+    margin-top: 10px;
+    height: 300px;
+
+}
+
+#signup_form {
+    font-size: 12pt;
+    display: flex;
+    justify-content: center;
+
+}
+    
+
+
+/* #field{
+    clear: right;
+    float: right;
+    max-width: 160px;
+} */
+
+#makespace {
+    float: left;
+    clear: left;
+    margin-left: 10px;
+    height: 400px;
+    width: 250px;
+    
+}
+
+form {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-top: 8px;
+}
+
+input[type="text"], input[type="email"], select{
+    width: 60%;
+    float: right;
+    clear: right;
+    display: flex;
+    justify-content: center;
+    font-size: 10pt;
+    
+}
+
+.btn{
+
+    clear: right;
+    float: right;
+    
+    width: auto;
+}
+/* 
+
+label{
+    width: 40%;
+    float: left; 
+    clear: left;
+} */
