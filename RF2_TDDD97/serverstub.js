@@ -43,6 +43,7 @@ var serverstub = (function() {
   var serverstub = {
     signIn: function(email, password){
       syncStorage();
+      
       if(users[email] != null && users[email].password == password){
         var letters = "abcdefghiklmnopqrstuvwwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         var token = "";

@@ -1,24 +1,44 @@
 displayView = function(){
     //code req to diplay a view
-    document.getElementById("show welcomeview").innerHTML = document.getElementById("welcomeview").innerHTML;
+    
+    if(localStorage.getItem('token') != null){
+        document.getElementById("show view").innerHTML = document.getElementById("profileview").innerHTML;
+    } else {
+        document.getElementById("show view").innerHTML = document.getElementById("welcomeview").innerHTML;
+     }
+    
 };
 window.onload=function(){
     displayView();
 };
 
 function submitLogin(form){
-    // let contact = {"name" : form.name.value, "number" : form.number.value};
-    // let contacts = localStorage.getItem("contacts");
-    // contacts = JSON.parse(contacts);
-    // contacts.push(contact);
-    // localStorage.setItem("contacts", JSON.stringify(contacts));
-  
+    var password = document.getElementById('login_pass').value;
+    var username = document.getElementById('login_email').value;
+
+    if(checkCharaters(password)){
+        
+        var response = serverstub.signIn(username, password);
+        Show_message(response.message);
+        if (response.success == true){
+            localStorage.setItem('token', response.data);
+            getProfile();
+            displayView();
+        }
+        
+        return false;
+        
+    } else {
+        confirm("Nu blev det fel");
+        return false;
+        
+    } 
 };
 
 function submitSignUp(form){
-    if(checkSame() && checkCharaters()){
-        // document.getElementById('message').style.color = 'green';
-        // document.getElementById('message').innerHTML = 'Successful signup';
+    var password = document.getElementById('signup_pass').value;
+    var repeat_password = document.getElementById('signup_repeatpass').value;
+    if(checkSame(password, repeat_password) && checkCharaters(password)){
         
         var signUpData = {
             "email": form.signup_email.value,
@@ -30,46 +50,107 @@ function submitSignUp(form){
             "country": form.signup_country.value
             
         };
-
-        serverstub.signUp(signUpData);
+        var response = serverstub.signUp(signUpData);
+        Show_message(response.message);
+        if(response.success == true){
+            document.getElementById(form).reset();
+        }
         
-    } else {
-        // document.getElementById('message').style.color = 'red';
-        // document.getElementById('message').innerHTML = 'Error occured';
         return false;
         
-    }
+    } else {
+        confirm("Nu blev det fel");
+        return false;
+        
+    } 
   
 };
 
-function checkSame(){
-    if (document.getElementById('signup_pass').value ==
-          document.getElementById('signup_repeatpass').value) {
-              
-        //    document.getElementById('message').style.color = 'green';
-        //    document.getElementById('message').innerHTML = 'matching';
+function Show_message(message) {
+    confirm(message);
+    
+}
+
+function checkSame(password, repeat_password){
+    if (password == repeat_password) {
            return true;
-      } else {
-            // document.getElementById('message').style.color = 'red';
-            // document.getElementById('message').innerHTML = 'Error occured';
+    } else {
             return false;
-      } 
-  
+    } 
 };
 
 
-function checkCharaters(){
-    var password = document.getElementById('signup_pass').value;
+function checkCharaters(password){
     if ( password.length < 8) {
-        // document.getElementById('message').style.color = 'red';
-        //    document.getElementById('message').innerHTML = 'Too short';
               return false;
-           
-      } else {
-        // document.getElementById('message').style.color = 'green';
-        // document.getElementById('message').innerHTML = 'OK';
-            return true;
-             
-      } 
-  
+    } else {
+            return true;  
+    } 
 };
+
+function openTab(tabName) {
+    var i;
+    var x = document.getElementsByClassName("tabs");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    document.getElementById(tabName).style.display = "block";  
+};
+
+
+function submitSignOut(){
+    var response = serverstub.signOut(localStorage.getItem('token'));
+    Show_message(response.message);
+    if(response.success == true){
+        localStorage.removeItem('token');
+    }
+    displayView();
+
+    
+};
+
+function submitChangePassword(form){
+    var old_password = form.change_old.value;
+    var new_password = form.change_new.value;
+    var repeat_password = form.change_repeat.value;
+    if(checkSame(new_password, repeat_password) && checkCharaters(new_password)){
+        var response = serverstub.changePassword(localStorage.getItem('token'), old_password, new_password);
+        Show_message(response.message);
+        if(response.success == true){
+            document.getElementById(form).reset();
+        }
+        return false;
+    } else {
+        Show_message("Fel");
+        return false;
+    }
+    
+};
+
+function getProfile(){
+    var response = serverstub.getUserDataByToken(localStorage.getItem('token'));
+    
+    
+    if(response.success == true){
+        confirm(response.success);
+        document.getElementById("profile_email").innerHTML = response.data.email;
+        document.getElementById("profile_fName").innerHTML = response.data.firstname;
+        document.getElementById("profile_lName").innerHTML = response.data.lastname;
+        document.getElementById("profile_gender").innerHTML = response.data.gender;
+        document.getElementById("profile_city").innerHTML = response.data.city;
+        document.getElementById("profile_country").innerHTML = response.data.country;
+        confirm("fett inne igen");
+        
+
+    } else {
+        Show_message("Error loading profile information");
+    }
+};
+
+// function checkOldPassword(old_password){
+//     if(old_password == ){
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }

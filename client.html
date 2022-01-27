@@ -3,7 +3,62 @@
         <link rel="stylesheet" href="client.css" type="text/css"> 
         <script src="client.js" type="text/javascript"></script>
         <script src="RF2_TDDD97/serverstub.js" type="text/javascript"></script>
-        <script type="text/view" id="profileview"></script>
+        <script type="text/view" id="profileview">
+            <div id="bonjour">
+                <h1>Bonjour</h1>
+                
+
+                <div class="tabBar">
+                    <button class="tab-button" onclick="openTab('Home')">Home</button>
+                    <button class="tab-button" onclick="openTab('Browse')">Browse</button>
+                    <button class="tab-button" onclick="openTab('Account')">Account</button>
+                </div>
+
+                <div id="Home" class="tabs">
+                    <h2>Home</h2>
+                    <div id="infobox">
+                        Email: <p id="profile_email"> </p>
+                        First name:  <p id="profile_fName"> </p>
+                        <p>Last name: id="profile_lName" </p>
+                        <p>Gender: id="profile_gender" </p>
+                        <p>City: id="profile_city" </p>
+                        <p>Country: id="profile_country" </p>
+                    </div>
+                    <div id="wall">
+                        <div id="writingbox"> 
+
+                        </div>
+                        <div id="postbox">
+
+                        </div>
+                    </div>
+                </div>
+                  
+                <div id="Browse" class="tabs" >
+                    <h2>Browse</h2>
+                    <p>Paris is the capital of France.</p>
+                </div>
+                  
+                <div id="Account" class="tabs">
+                    <div id="acc_group">
+                        <h2>Account</h2> 
+                        <div id="SignOutBox">
+                            <h3>Sign out here</h3> 
+                            <input type="submit" onclick="submitSignOut();return false;" value="SignOut" id="SignOut" class="btn_signout">
+                        </div>
+                        <div id="change_password">
+                            <h3>Change password here</h3> 
+                            <form action="" onsubmit="submitChangePassword(this);return false;">
+                                <p>Old password:<input type="text" required="required" name="change_old" id="change_old" class="field_change"></p>
+                                <p>New password:<input type="text" required="required" name="change_new" id="change_new" class="field_change"></p>
+                                <p>Repeat new password:<input type="text" required="required" name="change_repeat" id="change_repeat" class="field_change"></p>
+                                <input type="submit" value="Change password" id="submit_change" class="btn">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
         <script type="text/view" id="welcomeview">
               
             <div id="bb">
@@ -14,7 +69,7 @@
                 </div>
                 <div id="makespace">
                     <div id="login">
-                        <form action="" onsubmit="submit_login(this);return false;">
+                        <form action="" onsubmit="submitLogin(this);return false;">
                             <p>Email:<input type="email" required="required" name="login_email" id="login_email" class="field"></p>
                             <p>Password:<input type="text" required="required" name="login_pass" id="login_pass" class="field"></p>
                             <input type="submit" value="Login" id="submit_login" class="btn">
@@ -23,7 +78,7 @@
                     <div id="signup">
                         <h1>Sign up here</h1>
                         <div id="signup_form">
-                            <form action="" onsubmit="submit_signup(this);return false;">
+                            <form action="" onsubmit="submitSignUp(this);return false;">
                                 <p>First name:<input type="text" required="required" name="signup_fname" id="signup_fname" class="field"></p>
                                 <p>Last name:<input type="text" required="required" name="signup_lname" id="signup_lname" class="field"></p>
                                 <p>Gender:<select required="required" name="signup_gender" id="signup_gender">
@@ -34,8 +89,8 @@
                                 <p>City:<input type="text" required="required" name="signup_city" id="signup_city" class="field"></p>
                                 <p>Country:<input type="text" required="required" name="signup_country" id="signup_country" class="field"></p>
                                 <p>Email:<input type="email" required="required" name="signup_email" id="signup_email" class="field"></p>
-                                <p>Password:<input type="text" required="required" oninput="checkCharaters();" name="signup_pass" id="signup_pass" class="field"></p>
-                                <p>Repeat pswd:<input type="text" required="required" oninput="checkSame();" name="signup_repeatpass" id="signup_repeatpass" class="field">
+                                <p>Password:<input type="text" required="required" name="signup_pass" id="signup_pass" class="field"></p>
+                                <p>Repeat pswd:<input type="text" required="required" name="signup_repeatpass" id="signup_repeatpass" class="field">
                                 <span id='message'></span></p>
                                 <input type="submit" value="SignUp" id="submit_signup" class="btn">
                                 
@@ -50,7 +105,7 @@
 
     </head>
     <body>
-        <div id="show welcomeview"></div>
+        <div id="show view"></div>
         
     </body>
 </html>
