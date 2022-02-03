@@ -88,7 +88,7 @@
                 <div id="Browse" class="tabs" >
                     <h2 id="h2browse">Browse</h2>
                     <div id="searchbox">
-                        <form action="" onsubmit="submitBrowse(this);openBrowse('browsebox');return false;">
+                        <form action="" onsubmit="submitBrowse(this);return false;">
                             <p>Enter user-email:<input type="email" required="required" name="browse_useremail" id="browse_useremail"></p>
                             <input type="submit" value="Search" id="submit_search" class="btn">
                         </form>
@@ -148,6 +148,9 @@
 
     </head>
     <body>
+	<div id= messagebox>
+            <div id="message_field"></div> 
+        </div>
         <div id="show view"></div>
         
     </body>

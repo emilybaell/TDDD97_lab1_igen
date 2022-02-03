@@ -276,16 +276,29 @@ input[type="text"], input[type="email"], select{
     width: 900px;
 }
 
-/* #field{
-    clear: right;
-    float: right;
-    max-width: 160px;
-} */
+#message_field {
+    visibility: hidden;
+    min-width: 250px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: tomato;
+    color: #fff;
+    text-align: center;
+    border: 2px;
+    padding: 16px;
+    position: fixed;
+    font-size: 17px;
 
-/* 
+}
 
-label{
-    width: 40%;
-    float: left; 
-    clear: left;
-} */
+#messagebox {
+    display: flex;
+    justify-content: center;
+}
+  
+#message_field.show {
+    visibility: visible;
+  
+}
+

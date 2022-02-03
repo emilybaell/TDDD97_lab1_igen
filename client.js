@@ -22,9 +22,11 @@ function submitLogin(form){
             displayView();
             getProfile(username);
             UpdateWall();
+        } else {
+            Show_message(response.message);
         }
     } else {
-        Show_message(response.message);
+        Show_message("The password is too short!");  
     }
     return false;
 };
@@ -45,21 +47,15 @@ function submitSignUp(form){
         var response = serverstub.signUp(signUpData);
         if(response.success == true){
             document.getElementById(form).reset();
+        } else {
+            Show_message(response.message);
         }
         return false;
     } else {
-        Show_message(response.message);
+        Show_message("Either the password is too short or the password and repeat password does not match.");
         return false;
-        
-        
-    } 
-  
+    }  
 };
-
-function Show_message(message) {
-    confirm(message);
-    
-}
 
 function checkSame(password, repeat_password){
     if (password == repeat_password) {
@@ -156,7 +152,6 @@ function UpdateWall(){
     }
 };
  
-// Rensa faltet efter post
 function submitPost(){ 
     var message = document.getElementById("postText").value;
     var user = serverstub.getUserDataByToken(localStorage.getItem('token'));
@@ -177,6 +172,7 @@ function submitBrowse(form){
     if(response.success == true){
         getOtherProfile();
         UpdateWallBrowse();
+	openBrowse();
     } else {
         Show_message(response.message);
     }
@@ -184,15 +180,9 @@ function submitBrowse(form){
 };
 
 function openBrowse(browseName) {
-    var i;
-    var x = document.getElementsByClassName("browsebox");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";  
-    }
     document.getElementById(browseName).style.display = "block";  
 };
 
-// Rensa faltet efter post
 function submitPostBrowse(){ 
     var message = document.getElementById("postTextBrowse").value;
     var response = serverstub.postMessage(localStorage.getItem('token'), message, lastBrowse);
@@ -217,4 +207,11 @@ function UpdateWallBrowse(){
     } else {
         Show_message(response.message);
     }
+};
+
+function Show_message(message) {
+    var x = document.getElementById("message_field");
+    x.innerHTML = message;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 };
