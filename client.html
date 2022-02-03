@@ -46,8 +46,8 @@
         
         </script>
         <script type="text/view" id="profileview">
-            <div id="bonjour">
-                <h1>Bonjour</h1>
+            <div >
+                <h1 id="bonjour">Twidder</h1>
                 
 
                 <div class="tabBar">
@@ -57,34 +57,36 @@
                 </div>
 
                 <div id="Home" class="tabs">
-                    <h2>Home</h2>
-                    <div id="infobox">
-                        <h4>Profile information:</h4>
-                        <p id="profile_email"> </p>
-                        <p id="profile_fName"> </p>
-                        <p id="profile_lName"> </p> 
-                        <p id="profile_gender"> </p>
-                        <p id="profile_city"> </p>
-                        <p id="profile_country"> </p>
-                    </div>
-                    <div id="wall">
+                    <h2 id="h2home">Home</h2>
+                    <div id="profwrite">
+                        <div id="infobox">
+                            <h4>Profile information:</h4>
+                            <p id="profile_email"> </p>
+                            <p id="profile_fName"> </p>
+                            <p id="profile_lName"> </p> 
+                            <p id="profile_gender"> </p>
+                            <p id="profile_city"> </p>
+                            <p id="profile_country"> </p>
+                        </div>
+                        
                         <div id="writingbox"> 
-                            
                             <form action="" onsubmit="submitPost(this);return false;">
                                 <p><textarea required="required" placeholder="Write a post here..." name="postText" id="postText" class="postText"></textarea></p>
                                 <input type="submit" value="Post" id="submit_post" class="btn">
                             </form>
                         </div>
-                        <div id="postbox">
-                            <h2 id=wall_title>Wall</h2>
-                            <input type="submit" onclick="UpdateWall();return false;" value="Update" id="update_wall" >
-                            <div id="wall_messages"></div>
-                        </div>
                     </div>
+                    
+                    <div id="postbox">
+                        <h2 id=wall_title>Wall</h2>
+                        <input type="submit" onclick="UpdateWall();return false;" value="Update" id="update_wall" >
+                        <div id="wall_messages"></div>
+                    </div>
+                
                 </div>
                   
                 <div id="Browse" class="tabs" >
-                    <h2>Browse</h2>
+                    <h2 id="h2browse">Browse</h2>
                     <div id="searchbox">
                         <form action="" onsubmit="submitBrowse(this);openBrowse('browsebox');return false;">
                             <p>Enter user-email:<input type="email" required="required" name="browse_useremail" id="browse_useremail"></p>
@@ -92,16 +94,17 @@
                         </form>
                     </div>
                     <div id="browsebox" class="browsebox">
-                        <div id="infobox" >
-                            <h4>Profile information:</h4>
-                            <p id="browse_email"> </p>
-                            <p id="browse_fName"> </p>
-                            <p id="browse_lName"> </p> 
-                            <p id="browse_gender"> </p>
-                            <p id="browse_city"> </p>
-                            <p id="browse_country"> </p>
-                        </div>
                         <div id="wall">
+                            <div id="infobox" >
+                                <h4>Profile information:</h4>
+                                <p id="browse_email"> </p>
+                                <p id="browse_fName"> </p>
+                                <p id="browse_lName"> </p> 
+                                <p id="browse_gender"> </p>
+                                <p id="browse_city"> </p>
+                                <p id="browse_country"> </p>
+                            </div>
+                        
                             <div id="writingbox"> 
                                 
                                 <form action="" onsubmit="submitPostBrowse(this);return false;">
@@ -109,18 +112,20 @@
                                     <input type="submit" value="Post" id="submit_postBrowse" class="btn">
                                 </form>
                             </div>
-                            <div id="postbox">
-                                <h2 id=wall_title>Wall</h2>
-                                <input type="submit" onclick="UpdateWallBrowse();return false;" value="Update" id="update_wall" >
-                                <div id="wall_messagesBrowse"></div>
-                            </div>
                         </div>
+                        
+                        <div id="postbox">
+                            <h2 id=wall_title>Wall</h2>
+                            <input type="submit" onclick="UpdateWallBrowse();return false;" value="Update" id="update_wall" >
+                            <div id="wall_messagesBrowse"></div>
+                        </div>
+                        
                     </div>  
                 </div>
                   
                 <div id="Account" class="tabs">
                     <div id="acc_group">
-                        <h2>Account</h2> 
+                        <h2 id="accounth2">Account</h2> 
                         <div id="SignOutBox">
                             <h3>Sign out here</h3> 
                             <input type="submit" onclick="submitSignOut();return false;" value="SignOut" id="SignOut" class="btn_signout">
