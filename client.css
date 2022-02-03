@@ -51,18 +51,30 @@ p{
 #signup_form {
     font-size: 12pt;
     display: flex;
-    justify-content: center;
+    justify-content: center; 
 
 }
     
 h2{
     text-align: center;
+    
 }
-
+#h2home{
+    text-align: left;
+    margin-left: 40px;
+}
+#h2browse, #accounth2{
+    text-align: left;
+    color: whitesmoke;
+    
+}
 h3{
     text-align: center;  
 }
-
+#bonjour{
+    color: tomato;
+    
+}
 
 
 #makespace {
@@ -99,9 +111,7 @@ input[type="text"], input[type="email"], select{
     width: auto;
 }
 
-.tabs{
-    
-}
+
 .tab-button{
     border-style: none;
     height: 100%;
@@ -109,11 +119,11 @@ input[type="text"], input[type="email"], select{
     background-color: rgb(240, 235, 235);
     
 }
-/* .tab-button:hover{
-    background-color: peru;
-} */
+.tab-button:hover{
+    background-color: rgba(163, 48, 163, 0.945);
+} 
 .tab-button:focus{
-    background-color: peachpuff;
+    background-color: plum;
 }
 .tabBar{
     background-color: black;
@@ -125,6 +135,7 @@ input[type="text"], input[type="email"], select{
 
 #Home {
     display:block;
+    justify-content: center;
 }
 
 #Browse{
@@ -139,6 +150,7 @@ input[type="text"], input[type="email"], select{
 #acc_group{
     /* display: flex; */
     justify-content: center;
+    margin-left: 40px;
     
 }
 
@@ -171,6 +183,12 @@ input[type="text"], input[type="email"], select{
     margin-top: 10px;
     width: 400px;
     height: fit-content;
+}
+#profwrite{
+    height: 300px;
+    width: 406px; 
+    float: left;
+    margin-left: 40px;
 }
 
 #infobox{
@@ -209,8 +227,13 @@ input[type="text"], input[type="email"], select{
     width: 400px;
     height: fit-content;
     float: left;
-    clear: left;
+    
+    margin-left: 40px;
 }
+#wall{
+    float: left;
+}
+
 #update_wall{
     margin-top: 5px;
     float: right;
@@ -219,6 +242,7 @@ input[type="text"], input[type="email"], select{
     width: fit-content;
     display: flex;
     text-align: center;
+   
 }
 
 #wall_messages{
@@ -240,9 +264,16 @@ input[type="text"], input[type="email"], select{
     height: fit-content;
     
 }
+#Browse.tabs{
+    width: 406px;
+    margin-left: 40px;
+}
+
 
 #browsebox{
     display: none;
+    float: left;
+    width: 900px;
 }
 
 /* #field{

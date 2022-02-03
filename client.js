@@ -51,6 +51,7 @@ function submitSignUp(form){
         Show_message(response.message);
         return false;
         
+        
     } 
   
 };
@@ -146,7 +147,7 @@ function UpdateWall(){
     var response = serverstub.getUserMessagesByToken(localStorage.getItem('token'));
     if(response.success == true){
         var amount = response.data;
-        document.getElementById('wall_messages').innerHTML ="";
+        document.getElementById('wall_messages').innerHTML =""; 
         for(var i = 0; i < amount.length; i++){
             document.getElementById('wall_messages').innerHTML += "<div>" + response.data[i].writer + " : " + response.data[i].content + "</div>";
         }
@@ -156,7 +157,7 @@ function UpdateWall(){
 };
  
 // Rensa faltet efter post
-function submitPost(){
+function submitPost(){ 
     var message = document.getElementById("postText").value;
     var user = serverstub.getUserDataByToken(localStorage.getItem('token'));
     var response = serverstub.postMessage(localStorage.getItem('token'), message, user.data.email);
